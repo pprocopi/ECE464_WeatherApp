@@ -56,6 +56,7 @@ public class HomeFragment extends Fragment {
     Timestamp ts;
     String file = "currentweather.txt";
     public static  String alert = "";
+    //public static  String cond = "";
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -159,9 +160,13 @@ public class HomeFragment extends Fragment {
 
                         if (currentWeather.getMain().getTemp() >= 10.0) {
                             Intent in = new Intent(getActivity(),AlertDetails.class);
-                            in.putExtra(alert,"The weather in " + cityData +", " + countryData + " is dangerous hot!\nTemperature is "+ tempData + "\nPlease avoid get exposed to this weather.\nRead this web to learn how to cope hot weather.");
+                            System.out.println("CityData"+cityData+"   " + currentWeather.getName());
+                            String alertData = "The weather in " + cityData +", " + countryData + " is dangerously hot!\nTemperature is "+ tempData + "\nPlease avoid get exposed to this weather.\nRead this broser to learn how to cope with hot weather.";
+                            in.putExtra("alert",alertData);
+                            System.out.println("ALERT: " + alertData);
+                            //in.putExtra(cond,"Hot");
                             in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(),0,in,0);
+                            PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(),0,in,PendingIntent.FLAG_UPDATE_CURRENT);
                             NotificationChannel channel = null;
                             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                                 channel = new NotificationChannel(
@@ -177,7 +182,37 @@ public class HomeFragment extends Fragment {
                                 NotificationCompat.Builder notification = new NotificationCompat.Builder(getActivity(), "1")
                                         .setSmallIcon(android.R.drawable.ic_dialog_alert)
                                         .setContentTitle("Hot Weather Alert")
-                                        .setContentText("The weather in " + cityData + ", " + countryData + " is very high!")
+                                        .setContentText("The temperature in " + cityData + ", " + countryData + " is very high!\nTap for more.")
+                                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                        .setContentIntent(pendingIntent)
+                                        .setAutoCancel(true);
+
+                                NotificationManagerCompat notifyAdmin = NotificationManagerCompat.from(getActivity());
+                                notifyAdmin.notify(1, notification.build());
+                            }
+                        }
+                        else if (currentWeather.getMain().getTemp() < 5.0) {
+                            Intent in1 = new Intent(getActivity(),AlertDetails.class);
+                            in1.putExtra("alert","The weather in " + cityData +", " + countryData + " is extremely cold!\nTemperature is "+ tempData + "\nPlease avoid get exposed to this weather.\nRead this browser to learn how to cope with cold weather.");
+                            //in.putExtra(cond,"Cold");
+                            in1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(),0,in1,PendingIntent.FLAG_UPDATE_CURRENT);
+                            NotificationChannel channel = null;
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                channel = new NotificationChannel(
+                                        "1",
+                                        "channel1",
+                                        NotificationManager.IMPORTANCE_DEFAULT);
+
+                                //create the notification manager
+                                NotificationManager manager = getActivity().getSystemService(NotificationManager.class);
+                                manager.createNotificationChannel(channel);
+
+                                //create the notification
+                                NotificationCompat.Builder notification = new NotificationCompat.Builder(getActivity(), "1")
+                                        .setSmallIcon(android.R.drawable.ic_dialog_alert)
+                                        .setContentTitle("Cold Weather Alert")
+                                        .setContentText("The temperature in " + cityData + ", " + countryData + " is low!\nTap for more.")
                                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                                         .setContentIntent(pendingIntent)
                                         .setAutoCancel(true);

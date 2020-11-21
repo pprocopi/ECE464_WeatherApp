@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss"); //dd-MM-yyyy
     Timestamp ts;
     String file = "currentweather.txt";
-    public static  String alert = "";
+    //public static  String alert = "";
     //public static  String cond = "";
 
 
@@ -142,9 +142,9 @@ public class HomeFragment extends Fragment {
                         String humidData = String.valueOf(currentWeather.getMain().getHumidity())+"%";
                         String sunriseData = formatter.format(datesnr);
                         String sunsetData = formatter.format(datesunset);
-                        String pressureData = String.valueOf(currentWeather.getMain().getPressure());
-                        String windData = String.valueOf(currentWeather.getWind().getSpeed());
-                        String tempData = String.valueOf(currentWeather.getMain().getTemp())+" oC";
+                        String pressureData = String.valueOf(currentWeather.getMain().getPressure())+" hPa";
+                        String windData = String.valueOf(currentWeather.getWind().getSpeed())+" m/s";
+                        String tempData = String.valueOf(currentWeather.getMain().getTemp())+" °C";
 
 
                         country.setText(countryData);
@@ -161,7 +161,7 @@ public class HomeFragment extends Fragment {
                         if (currentWeather.getMain().getTemp() >= 10.0) {
                             Intent in = new Intent(getActivity(),AlertDetails.class);
                             System.out.println("CityData"+cityData+"   " + currentWeather.getName());
-                            String alertData = "The weather in " + cityData +", " + countryData + " is dangerously hot!\nTemperature is "+ tempData + "\nPlease avoid get exposed to this weather.\nRead this broser to learn how to cope with hot weather.";
+                            String alertData = "The weather in " + cityData +", " + countryData + " is dangerously hot!\nTemperature is "+ tempData + "\nPlease avoid get exposed to this weather.\nRead this browser to learn how to cope with hot weather.";
                             in.putExtra("alert",alertData);
                             System.out.println("ALERT: " + alertData);
                             //in.putExtra(cond,"Hot");
@@ -252,7 +252,8 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onFailure(Throwable throwable) {
-                        System.out.println(throwable.getMessage());
+                        Toast.makeText(getActivity().getApplicationContext(), throwable.getMessage(), Toast.LENGTH_LONG).show();
+                        //System.out.println(throwable.getMessage());
                     }
                 });
             }

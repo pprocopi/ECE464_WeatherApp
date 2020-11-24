@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CitiesActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvChooseCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="City:" />
+
+        <RadioGroup
+            android:id="@+id/rbGroupCities"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbLarnaca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Larnaca" />
+
+            <RadioButton
+                android:id="@+id/rbNicosia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nicosia" />
+
+            <RadioButton
+                android:id="@+id/rbLimassol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Limassol" />
+
+            <RadioButton
+                android:id="@+id/rbPaphos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Paphos" />
+
+            <RadioButton
+                android:id="@+id/rbFamagusta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Famagusta" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="chooseCity"
+            android:text="choose city" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="searchInGoogleMap"
+            android:text="search in google map" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frag123"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <fragment
+            android:id="@+id/fragment2"
+            android:name="com.example.ece464_weatherapp.MapsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+
+
+
+
+</LinearLayout>

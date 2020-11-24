@@ -8,7 +8,12 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_charts">Charts</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="OPEN_WEATHER_MAP_API_KEY">3d1edf43724fd097f3836375d4dbef3e</string>
+    <string name="tvSnowText">Snowfall (Millimeters)</string>
+    <string name="tvRainText">Rainfall (Millimeters)</string>
+    <string name="tvTemperatureText">Temperature (Celsius)</string>
+    <string name="btChartText">chart</string>
+    <string name="etCityHint">Enter City</string>
 </resources>

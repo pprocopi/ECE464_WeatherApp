@@ -4,8 +4,11 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -13,6 +16,13 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.kwabenaberko.openweathermaplib.constants.Units;
+import com.kwabenaberko.openweathermaplib.implementation.OpenWeatherMapHelper;
+import com.kwabenaberko.openweathermaplib.implementation.callbacks.CurrentWeatherCallback;
+import com.kwabenaberko.openweathermaplib.models.currentweather.CurrentWeather;
+import com.squareup.picasso.Picasso;
+
+import java.sql.Timestamp;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -32,6 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -49,39 +60,99 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Lat=info.getDouble("lat");
         Lng=info.getDouble("lng");
         name=info.getString("onoma");
+        final Timestamp[] ts = new Timestamp[1];
+        final String[] temp = {""};
 
 
-        if(name.equals("Larnaca")){
-            LatLng Larnaca = new LatLng(Lat,Lng);
-            mMap.addMarker(new MarkerOptions().position(Larnaca).title(name+" Lat: "+Lat+" Lng:"+Lng));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Larnaca,12),5000,null);
-        }
-        else if(name.equals("Nicosia")){
-            LatLng Nicosia = new LatLng(Lat,Lng);
-            mMap.addMarker(new MarkerOptions().position(Nicosia).title(name+" Lat: "+Lat+" Lng:"+Lng));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Nicosia,12),5000,null);
 
-        }
-        else if(name.equals("Limassol")){
-            LatLng Limassol = new LatLng(Lat,Lng);
-            mMap.addMarker(new MarkerOptions().position(Limassol).title(name+" Lat: "+Lat+" Lng:"+Lng));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Limassol,12),5000,null);
+        OpenWeatherMapHelper helper = new OpenWeatherMapHelper(getString(R.string.OPEN_WEATHER_MAP_API_KEY));
+        helper.setUnits(Units.METRIC);
 
-        }
-        else if(name.equals("Paphos")){
-            LatLng Paphos = new LatLng(Lat,Lng);
-            mMap.addMarker(new MarkerOptions().position(Paphos).title(name+" Lat: "+Lat+" Lng:"+Lng));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Paphos,12),5000,null);
+        helper.getCurrentWeatherByCityName(name, new CurrentWeatherCallback() {
+            @Override
+            public void onSuccess(CurrentWeather currentWeather) {
+                ts[0] = new Timestamp(currentWeather.getSys().getSunrise());
+                System.out.println(ts[0].toString());
 
-        }
-        else if(name.equals("Famagusta")){
-            LatLng Famagusta = new LatLng(Lat,Lng);
-            mMap.addMarker(new MarkerOptions().position(Famagusta).title(name+" Lat: "+Lat+" Lng:"+Lng));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Famagusta,12),5000,null);
+                String tempData = String.valueOf(currentWeather.getMain().getTemp())+" °C";
+                System.out.println(tempData.toString());
 
-        }
+                temp[0] =tempData;
+                System.out.println(temp[0]);
 
-        // Add a marker in Sydney and move the camera
+                if(name.equals("Larnaca")){
+                    ImageView icon= findViewById(R.id.ivIcon);
+                    TextView tvtemp=findViewById(R.id.tvTemp);
+                    tvtemp.setText(temp[0]);
+
+                    LatLng Larnaca = new LatLng(Lat,Lng);
+                    String url = "https://openweathermap.org/img/wn/"+currentWeather.getWeather().get(0).getIcon()+"@2x.png";
+                    Picasso.get().load(url).into(icon);
+                    mMap.addMarker(new MarkerOptions().position(Larnaca).title("Temperature in "+name+" :"+temp[0])).showInfoWindow();
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Larnaca,12),5000,null);
+                }
+                else if(name.equals("Nicosia")){
+                    ImageView icon= findViewById(R.id.ivIcon);
+                    TextView tvtemp=findViewById(R.id.tvTemp);
+                    tvtemp.setText(temp[0]);
+
+                    LatLng Nicosia = new LatLng(Lat,Lng);
+                    String url = "https://openweathermap.org/img/wn/"+currentWeather.getWeather().get(0).getIcon()+"@2x.png";
+                    Picasso.get().load(url).into(icon);
+                    mMap.addMarker(new MarkerOptions().position(Nicosia).title("Temperature in "+name+" :"+temp[0])).showInfoWindow();;
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Nicosia,12),5000,null);
+
+                }
+                else if(name.equals("Limassol")){
+                    ImageView icon= findViewById(R.id.ivIcon);
+                    TextView tvtemp=findViewById(R.id.tvTemp);
+                    tvtemp.setText(temp[0]);
+
+                    String url = "https://openweathermap.org/img/wn/"+currentWeather.getWeather().get(0).getIcon()+"@2x.png";
+                    Picasso.get().load(url).into(icon);
+                    LatLng Limassol = new LatLng(Lat,Lng);
+                    mMap.addMarker(new MarkerOptions().position(Limassol).title("Temperature in "+name+" :"+temp[0])).showInfoWindow();;
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Limassol,12),5000,null);
+
+                }
+                else if(name.equals("Paphos")){
+                    ImageView icon= findViewById(R.id.ivIcon);
+                    TextView tvtemp=findViewById(R.id.tvTemp);
+                    tvtemp.setText(temp[0]);
+
+                    String url = "https://openweathermap.org/img/wn/"+currentWeather.getWeather().get(0).getIcon()+"@2x.png";
+                    Picasso.get().load(url).into(icon);
+                    LatLng Paphos = new LatLng(Lat,Lng);
+                    mMap.addMarker(new MarkerOptions().position(Paphos).title("Temperature in "+name+" :"+temp[0])).showInfoWindow();;
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Paphos,12),5000,null);
+
+                }
+                else if(name.equals("Famagusta")){
+                    ImageView icon= findViewById(R.id.ivIcon);
+                    TextView tvtemp=findViewById(R.id.tvTemp);
+                    tvtemp.setText(temp[0]);
+
+                    String url = "https://openweathermap.org/img/wn/"+currentWeather.getWeather().get(0).getIcon()+"@2x.png";
+                    Picasso.get().load(url).into(icon);
+                    LatLng Famagusta = new LatLng(Lat,Lng);
+                    mMap.addMarker(new MarkerOptions().position(Famagusta).title("Temperature in "+name+" :"+temp[0])).showInfoWindow();
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Famagusta,12),5000,null);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+
+            }
+        });
+
+
+
+
+
+
+
 
     }
 }

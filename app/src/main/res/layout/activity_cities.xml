@@ -4,90 +4,175 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".CitiesActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="667dp"
+        android:layout_weight="1.1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="325dp"
+            android:layout_height="265dp"
+            android:background="#590B0A0A"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.421">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Location "
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.551"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.075" />
+
+            <TextView
+                android:id="@+id/tvTemp"
+                android:layout_width="239dp"
+                android:layout_height="77dp"
+                android:textColor="#FBFBFB"
+                android:textSize="61sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.604"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.744" />
+
+            <Button
+                android:id="@+id/btFindLocation"
+                android:layout_width="254dp"
+                android:layout_height="45dp"
+                android:text="Find my location"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.987" />
+
+            <TextView
+                android:id="@+id/tvlocationdata"
+                android:layout_width="232dp"
+                android:layout_height="77dp"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.371" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.8"
+        android:layout_weight="0.9"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvChooseCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="City:" />
+            android:layout_margin="10dp"
+            android:shadowColor="#FFFFFF"
+            android:text="City:"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
 
         <RadioGroup
             android:id="@+id/rbGroupCities"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#590B0A0A">
 
             <RadioButton
                 android:id="@+id/rbLarnaca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Larnaca" />
+                android:onClick="rbLar"
+                android:paddingLeft="10dp"
+                android:text="Larnaca"
+                android:textColor="#FBFBFB"
+                android:textColorHighlight="#070707"
+                android:textColorHint="#FFFFFF"
+                android:textColorLink="#040404"
+                app:useMaterialThemeColors="false" />
 
             <RadioButton
                 android:id="@+id/rbNicosia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nicosia" />
+                android:onClick="rbNic"
+                android:paddingLeft="10dp"
+                android:text="Nicosia"
+                android:textColor="#FBFBFB"
+                app:useMaterialThemeColors="false" />
 
             <RadioButton
                 android:id="@+id/rbLimassol"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Limassol" />
+                android:onClick="rbLim"
+                android:paddingLeft="10dp"
+                android:text="Limassol"
+                android:textColor="#FBFBFB"
+                app:useMaterialThemeColors="false" />
 
             <RadioButton
                 android:id="@+id/rbPaphos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Paphos" />
+                android:onClick="rbPap"
+                android:paddingLeft="10dp"
+                android:text="Paphos"
+                android:textColor="#FBFBFB"
+                app:useMaterialThemeColors="false" />
 
             <RadioButton
                 android:id="@+id/rbFamagusta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Famagusta" />
+                android:onClick="rbFam"
+                android:paddingLeft="10dp"
+                android:text="Famagusta"
+                android:textColor="#FBFBFB"
+                app:useMaterialThemeColors="false" />
         </RadioGroup>
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             android:onClick="chooseCity"
-            android:text="choose city" />
+            android:text="search city in google map"
+            app:rippleColor="@color/teal_200"
+            app:strokeColor="@android:color/holo_blue_dark" />
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="searchInGoogleMap"
-            android:text="search in google map" />
     </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/frag123"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-
-        <fragment
-            android:id="@+id/fragment2"
-            android:name="com.example.ece464_weatherapp.MapsFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </FrameLayout>
-
-
-
 
 
 </LinearLayout>

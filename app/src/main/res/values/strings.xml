@@ -5,7 +5,7 @@
     <string name="nav_header_title">Weather App</string>
     <string name="nav_header_subtitle">ECE464 Project</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_about">About Us</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_charts">Charts</string>

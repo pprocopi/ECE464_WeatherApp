@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ece464_weatherapp">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -20,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ECE464_WeatherApp">
-
+        <activity android:name=".AboutActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -35,21 +34,15 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="Map"></activity>
-
-        <activity android:name=".CitiesActivity"
-            android:parentActivityName=".MainActivity">
-
-
-        </activity>
-
+            android:label="Map" />
+        <activity
+            android:name=".CitiesActivity"
+            android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".AlertDetails" />
-
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.ECE464_WeatherApp.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

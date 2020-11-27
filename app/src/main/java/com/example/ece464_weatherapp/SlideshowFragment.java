@@ -1,5 +1,6 @@
 package com.example.ece464_weatherapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +23,17 @@ public class SlideshowFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
 
         return root;
+    }
+
+    public void startLocation(View v){
+        Intent in = new Intent(getActivity(), CitiesActivity.class);
+        startActivity(in);
+    }
+
+    public void startRate(View v){
+        Intent in = new Intent(getActivity(), CitiesActivity.class);
+        startActivity(in);
     }
 }

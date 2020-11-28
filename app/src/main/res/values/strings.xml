@@ -5,7 +5,8 @@
     <string name="nav_header_title">Weather App</string>
     <string name="nav_header_subtitle">ECE464 Project</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_about">About Us</string>
+    <string name="hyperlink">To visit us on GitHub click<a href="https://github.com/pprocopi/ECE464_WeatherApp">here!</a></string>
 
     <string name="menu_home">Home</string>
     <string name="menu_charts">Charts</string>
@@ -16,4 +17,5 @@
     <string name="tvTemperatureText">Temperature (Celsius)</string>
     <string name="btChartText">chart</string>
     <string name="etCityHint">Enter City</string>
+    <string name="tvInfo">This application is a project (implementation) of a model weather app for the purposes of Course ECE464. We are: Rafail Frixou, Panayiotis Procopi, Giorgos Sitarenos, Christos Ioannou. Thank you for visiting our Application.</string>
 </resources>

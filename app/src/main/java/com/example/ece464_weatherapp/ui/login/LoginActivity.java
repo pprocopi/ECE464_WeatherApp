@@ -28,9 +28,6 @@ import com.example.ece464_weatherapp.MainActivity;
 import com.example.ece464_weatherapp.R;
 import com.example.ece464_weatherapp.RatingActivity;
 import com.example.ece464_weatherapp.RegisterActivity;
-import com.example.ece464_weatherapp.SlideshowFragment;
-import com.example.ece464_weatherapp.ui.login.LoginViewModel;
-import com.example.ece464_weatherapp.ui.login.LoginViewModelFactory;
 
 public class LoginActivity<Private> extends AppCompatActivity {
 

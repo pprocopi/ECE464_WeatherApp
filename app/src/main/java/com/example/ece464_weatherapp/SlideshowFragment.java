@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ece464_weatherapp.R;
+import com.example.ece464_weatherapp.ui.login.LoginActivity;
 
 
 public class SlideshowFragment extends Fragment {
@@ -35,10 +36,10 @@ public class SlideshowFragment extends Fragment {
         });
 
         Button bRate = root.findViewById(R.id.btRate);
-        bLoc.setOnClickListener(new View.OnClickListener() {
+        bRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent inLoc = new Intent(getActivity(), CitiesActivity.class);
+                Intent inLoc = new Intent(getActivity(), LoginActivity.class);
                 startActivity(inLoc);
             }
         });
@@ -46,6 +47,8 @@ public class SlideshowFragment extends Fragment {
 
         return root;
     }
+
+
 
 
 

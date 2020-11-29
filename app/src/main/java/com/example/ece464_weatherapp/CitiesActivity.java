@@ -4,7 +4,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.TargetApi;
-import android.app.ActionBar;
 import android.content.Intent;
 
 import android.location.Address;
@@ -20,10 +19,6 @@ import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.kwabenaberko.openweathermaplib.constants.Units;
@@ -39,8 +34,10 @@ import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class CitiesActivity extends AppCompatActivity {
-    double lat,lng;
-    String name="";
+    double lat, lng;
+    String name = "";
+    double longitude ;
+    double latitude;
     private ArrayList permissionsToRequest;
     private ArrayList permissionsRejected = new ArrayList();
     private ArrayList permissions = new ArrayList();
@@ -53,7 +50,7 @@ public class CitiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_cities);
-        TextView tvCity=findViewById(R.id.tvChooseCity);
+        TextView tvCity = findViewById(R.id.tvChooseCity);
         final String[] temp = {""};
         tvCity.append(" Larnaca");
         OpenWeatherMapHelper helper = new OpenWeatherMapHelper(getString(R.string.OPEN_WEATHER_MAP_API_KEY));
@@ -70,45 +67,57 @@ public class CitiesActivity extends AppCompatActivity {
                 requestPermissions((String[]) permissionsToRequest.toArray(new String[permissionsToRequest.size()]), ALL_PERMISSIONS_RESULT);
         }
 
-        Button btn = (Button) findViewById(R.id.btFindLocation);
+        Button btn = (Button) findViewById(R.id.btFindLocationdata);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int i=0;
+
 
                 locationTrack = new LocationTrack(CitiesActivity.this);
                 if (locationTrack.canGetLocation()) {
 
-                    double longitude = locationTrack.getLongitude();
-                    double latitude = locationTrack.getLatitude();
-                    TextView tvflocation=findViewById(R.id.tvlocationdata);
-                    tvflocation.setText(getCompleteAddressString(latitude,longitude ));
+                    longitude = locationTrack.getLongitude();
+                    latitude = locationTrack.getLatitude();
+                    TextView tvflocation = findViewById(R.id.tvlocationdata);
+                    tvflocation.setText(getCompleteAddressString(latitude, longitude));
+//                    Button bt2=findViewById(R.id.btFindLocationMap);
 
 
-                    helper.getCurrentWeatherByGeoCoordinates(latitude,longitude, new CurrentWeatherCallback() {
+//                    if(longitude!=0&&latitude!=0){
+//                        bt2.setVisibility(View.VISIBLE);
+//                    }
+
+                    helper.getCurrentWeatherByGeoCoordinates(latitude, longitude, new CurrentWeatherCallback() {
                         @Override
                         public void onSuccess(CurrentWeather currentWeather) {
 
-                            TextView tvftemp=findViewById(R.id.tvTemp);
-                            String tempData = String.valueOf(currentWeather.getMain().getTemp())+" °C";
+                            TextView tvftemp = findViewById(R.id.tvTemp);
+                            String tempData = String.valueOf(currentWeather.getMain().getTemp()) + " °C";
                             System.out.println(tempData.toString());
 
-                            temp[0] =tempData;
+                            temp[0] = tempData;
                             System.out.println(temp[0]);
                             tvftemp.setText(temp[0]);
                         }
+
                         @Override
                         public void onFailure(Throwable throwable) {
                         }
                     });
 
                 } else {
+
                     locationTrack.showSettingsAlert();
                 }
 
+
             }
+
         });
 
     }
+
 
 
     private String getCompleteAddressString(double LATITUDE, double LONGITUDE) {
@@ -125,7 +134,7 @@ public class CitiesActivity extends AppCompatActivity {
                 }
                 strAdd = strReturnedAddress.toString();
 
-            Toast.makeText(getApplicationContext(), strReturnedAddress.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), strReturnedAddress.toString(), Toast.LENGTH_SHORT).show();
             } else {
 
                 Toast.makeText(getApplicationContext(), "No Address returned!", Toast.LENGTH_SHORT).show();
@@ -215,28 +224,32 @@ public class CitiesActivity extends AppCompatActivity {
         locationTrack.stopListener();
     }
 
-    public void rbLar(View v){
-        TextView tvCity=findViewById(R.id.tvChooseCity);
+    public void rbLar(View v) {
+        TextView tvCity = findViewById(R.id.tvChooseCity);
         tvCity.setText("City:");
         tvCity.append(" Larnaca");
     }
-    public void rbNic(View v){
-        TextView tvCity=findViewById(R.id.tvChooseCity);
+
+    public void rbNic(View v) {
+        TextView tvCity = findViewById(R.id.tvChooseCity);
         tvCity.setText("City:");
         tvCity.append(" Nicosia");
     }
-    public void rbLim(View v){
-        TextView tvCity=findViewById(R.id.tvChooseCity);
+
+    public void rbLim(View v) {
+        TextView tvCity = findViewById(R.id.tvChooseCity);
         tvCity.setText("City:");
         tvCity.append(" Limassol");
     }
-    public void rbPap(View v){
-        TextView tvCity=findViewById(R.id.tvChooseCity);
+
+    public void rbPap(View v) {
+        TextView tvCity = findViewById(R.id.tvChooseCity);
         tvCity.setText("City:");
         tvCity.append(" Paphos");
     }
-    public void rbFam(View v){
-        TextView tvCity=findViewById(R.id.tvChooseCity);
+
+    public void rbFam(View v) {
+        TextView tvCity = findViewById(R.id.tvChooseCity);
         tvCity.setText("City:");
         tvCity.append(" Famagusta");
     }

@@ -49,6 +49,7 @@ public class CitiesActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         setContentView(R.layout.activity_cities);
         TextView tvCity = findViewById(R.id.tvChooseCity);
         final String[] temp = {""};
@@ -218,11 +219,11 @@ public class CitiesActivity extends AppCompatActivity {
                 .show();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        locationTrack.stopListener();
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        locationTrack.stopListener();
+//    }
 
     public void rbLar(View v) {
         TextView tvCity = findViewById(R.id.tvChooseCity);
@@ -268,6 +269,10 @@ public class CitiesActivity extends AppCompatActivity {
         in.putExtras(coords);
         startActivity(in);
 
+    }
+    public void findInWebView(View v){
+        Intent in=new Intent(this,CitiesWebView.class);
+        startActivity(in);
     }
 
     public void chooseCity(View v){

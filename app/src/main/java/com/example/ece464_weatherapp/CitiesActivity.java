@@ -81,12 +81,12 @@ public class CitiesActivity extends AppCompatActivity {
                     latitude = locationTrack.getLatitude();
                     TextView tvflocation = findViewById(R.id.tvlocationdata);
                     tvflocation.setText(getCompleteAddressString(latitude, longitude));
-//                    Button bt2=findViewById(R.id.btFindLocationMap);
+                    Button bt2=findViewById(R.id.btFindLocationMap);
 
 
-//                    if(longitude!=0&&latitude!=0){
-//                        bt2.setVisibility(View.VISIBLE);
-//                    }
+                    if(longitude!=0&&latitude!=0){
+                        bt2.setVisibility(View.VISIBLE);
+                    }
 
                     helper.getCurrentWeatherByGeoCoordinates(latitude, longitude, new CurrentWeatherCallback() {
                         @Override
@@ -253,7 +253,22 @@ public class CitiesActivity extends AppCompatActivity {
         tvCity.setText("City:");
         tvCity.append(" Famagusta");
     }
+    public void findLocationMap(View v){
+        Bundle coords=new Bundle();
+        lat=latitude;
+        lng=longitude;
+        name="My Location";
+        System.out.println(lat);
+        System.out.println(lng);
 
+        Intent in=new Intent(this,MapsActivity.class);
+        coords.putDouble("lat",lat);
+        coords.putDouble("lng",lng);
+        coords.putString("onoma",name);
+        in.putExtras(coords);
+        startActivity(in);
+
+    }
 
     public void chooseCity(View v){
         RadioGroup rbGroup=findViewById(R.id.rbGroupCities);

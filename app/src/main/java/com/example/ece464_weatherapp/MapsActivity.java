@@ -77,13 +77,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     temp[0] =tempData;
                     System.out.println(temp[0]);
 
-//                    ImageView icon= findViewById(R.id.ivIcon);
-//                    TextView tvtemp=findViewById(R.id.tvTemp);
-//                    tvtemp.setText(temp[0]);
+                    ImageView icon= findViewById(R.id.ivIcon);
+                    TextView tvtemp=findViewById(R.id.tvTemp);
+                    tvtemp.setText(temp[0]);
 
                     LatLng MyLocation = new LatLng(Lat,Lng);
-//                    String url = "https://openweathermap.org/img/wn/"+currentWeather.getWeather().get(0).getIcon()+"@2x.png";
-//                    Picasso.get().load(url).into(icon);
+                    String url = "https://openweathermap.org/img/wn/"+currentWeather.getWeather().get(0).getIcon()+"@2x.png";
+                    Picasso.get().load(url).into(icon);
                     mMap.addMarker(new MarkerOptions().position(MyLocation).title("Temperature in "+name+" :"+temp[0])).showInfoWindow();
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(MyLocation,12),5000,null);
                 }

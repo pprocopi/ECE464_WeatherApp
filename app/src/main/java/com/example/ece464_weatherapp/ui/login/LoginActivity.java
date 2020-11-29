@@ -144,7 +144,7 @@ public class LoginActivity<Private> extends AppCompatActivity {
         startActivity(in1);
     }
     public void sendBack (View v){
-        Intent in2 = new Intent(this, SlideshowFragment.class);
+        Intent in2 = new Intent(this, MainActivity.class);
         startActivity(in2);
     }
 

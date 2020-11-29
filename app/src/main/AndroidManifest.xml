@@ -50,6 +50,7 @@
         <activity
             android:name=".CitiesActivity"
             android:parentActivityName=".MainActivity" />
+
         <activity android:name=".AlertDetails" />
 
         <activity

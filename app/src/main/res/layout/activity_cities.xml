@@ -15,8 +15,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
-            android:layout_width="325dp"
-            android:layout_height="265dp"
+            android:layout_width="328dp"
+            android:layout_height="242dp"
             android:background="#590B0A0A"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -99,12 +99,10 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.9"
-        android:orientation="vertical">
+        android:layout_weight="0.8">
 
         <TextView
             android:id="@+id/tvChooseCity"
@@ -114,21 +112,58 @@
             android:shadowColor="#FFFFFF"
             android:text="City:"
             android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.157"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="chooseCity"
+            android:text="search city in google map"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.823" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="findInWebView"
+            android:text="Find in Web"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.96" />
 
         <RadioGroup
             android:id="@+id/rbGroupCities"
-            android:layout_width="127dp"
-            android:layout_height="wrap_content"
+            android:layout_width="131dp"
+            android:layout_height="183dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:background="#590B0A0A">
+            android:background="#590B0A0A"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.322">
 
             <RadioButton
                 android:id="@+id/rbLarnaca"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:checked="true"
                 android:onClick="rbLar"
                 android:paddingLeft="10dp"
@@ -142,58 +177,52 @@
             <RadioButton
                 android:id="@+id/rbNicosia"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:onClick="rbNic"
                 android:paddingLeft="10dp"
                 android:text="Nicosia"
                 android:textColor="#FBFBFB"
-                app:useMaterialThemeColors="false" />
+                app:useMaterialThemeColors="false"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="99dp" />
 
             <RadioButton
                 android:id="@+id/rbLimassol"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:onClick="rbLim"
                 android:paddingLeft="10dp"
                 android:text="Limassol"
                 android:textColor="#FBFBFB"
-                app:useMaterialThemeColors="false" />
+                app:useMaterialThemeColors="false"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="147dp" />
 
             <RadioButton
                 android:id="@+id/rbPaphos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:onClick="rbPap"
                 android:paddingLeft="10dp"
                 android:text="Paphos"
                 android:textColor="#FBFBFB"
-                app:useMaterialThemeColors="false" />
+                app:useMaterialThemeColors="false"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="195dp" />
 
             <RadioButton
                 android:id="@+id/rbFamagusta"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="37dp"
                 android:onClick="rbFam"
                 android:paddingLeft="10dp"
                 android:text="Famagusta"
                 android:textColor="#FBFBFB"
-                app:useMaterialThemeColors="false" />
+                app:useMaterialThemeColors="false"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="243dp" />
         </RadioGroup>
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:onClick="chooseCity"
-            android:text="search city in google map"
-            app:rippleColor="@color/teal_200"
-            app:strokeColor="@android:color/holo_blue_dark" />
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>

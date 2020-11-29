@@ -269,6 +269,10 @@ public class CitiesActivity extends AppCompatActivity {
         startActivity(in);
 
     }
+    public void findInWebView(View v){
+        Intent in=new Intent(this,CitiesWebView.class);
+        startActivity(in);
+    }
 
     public void chooseCity(View v){
         RadioGroup rbGroup=findViewById(R.id.rbGroupCities);

@@ -19,7 +19,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ECE464_WeatherApp">
-        <activity android:name=".RegisterActivity"></activity>
+        <activity
+            android:name=".CitiesWebView"
+            android:label="@string/title_activity_cities_web_view"
+            android:theme="@style/Theme.ECE464_WeatherApp.NoActionBar">
+
+        </activity>
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".RatingActivity2" />
         <activity android:name=".RatingActivity" />
         <activity
@@ -45,6 +51,7 @@
             android:name=".CitiesActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".AlertDetails" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -54,7 +61,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

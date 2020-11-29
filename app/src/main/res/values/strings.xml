@@ -10,7 +10,7 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_charts">Charts</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_more">More</string>
     <string name="OPEN_WEATHER_MAP_API_KEY">3d1edf43724fd097f3836375d4dbef3e</string>
     <string name="tvSnowText">Snowfall (Millimeters)</string>
     <string name="tvRainText">Rainfall (Millimeters)</string>
@@ -18,4 +18,13 @@
     <string name="btChartText">chart</string>
     <string name="etCityHint">Enter City</string>
     <string name="tvInfo">This application is a project (implementation) of a model weather app for the purposes of Course ECE464. We are: Rafail Frixou, Panayiotis Procopi, Giorgos Sitarenos, Christos Ioannou. Thank you for visiting our Application.</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>

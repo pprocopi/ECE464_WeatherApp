@@ -17,8 +17,8 @@ public class AlertDetails extends AppCompatActivity {
         setContentView(R.layout.activity_alert_details);
         Intent in = getIntent();
         Bundle bund = in.getExtras();
-        String value = bund.getString("alert");
-        //String value = in.getStringExtra(HomeFragment.alert);
+        //String value = bund.getString("alert");
+        String value = in.getStringExtra(HomeFragment.alert);
         //String cond = in.getStringExtra(HomeFragment.cond);
         TextView tv = findViewById(R.id.tvText1);
         tv.setText(value);

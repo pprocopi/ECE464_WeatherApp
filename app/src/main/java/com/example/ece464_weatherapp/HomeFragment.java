@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss"); //dd-MM-yyyy
     Timestamp ts;
     String file = "currentweather.txt";
-    //public static  String alert = "";
+    public static  String alert = "";
     //public static  String cond = "";
 
 
@@ -162,7 +162,7 @@ public class HomeFragment extends Fragment {
                             Intent in = new Intent(getActivity(),AlertDetails.class);
                             System.out.println("CityData"+cityData+"   " + currentWeather.getName());
                             String alertData = "The weather in " + cityData +", " + countryData + " is dangerously hot!\nTemperature is "+ tempData + "\nPlease avoid get exposed to this weather.\nRead this browser to learn how to cope with hot weather.";
-                            in.putExtra("alert",alertData);
+                            in.putExtra(alert,alertData);
                             System.out.println("ALERT: " + alertData);
                             //in.putExtra(cond,"Hot");
                             in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -193,7 +193,7 @@ public class HomeFragment extends Fragment {
                         }
                         else if (currentWeather.getMain().getTemp() < 5.0) {
                             Intent in1 = new Intent(getActivity(),AlertDetails.class);
-                            in1.putExtra("alert","The weather in " + cityData +", " + countryData + " is extremely cold!\nTemperature is "+ tempData + "\nPlease avoid get exposed to this weather.\nRead this browser to learn how to cope with cold weather.");
+                            in1.putExtra(alert,"The weather in " + cityData +", " + countryData + " is extremely cold!\nTemperature is "+ tempData + "\nPlease avoid get exposed to this weather.\nRead this browser to learn how to cope with cold weather.");
                             //in.putExtra(cond,"Cold");
                             in1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(),0,in1,PendingIntent.FLAG_UPDATE_CURRENT);
